@@ -1,0 +1,18 @@
+# We base our image from opensuse/leap
+# It contains avr tools and a working clangd build
+FROM opensuse/leap:15.2
+
+# Our image configuration
+LABEL avride latest
+
+# Setting up avr environment
+RUN zypper in -y make clang avr-libc avrdude cross-avr-binutils cross-avr-gcc7
+ADD https://raw.githubusercontent.com/buserror/simavr/master/simavr/sim/avr/avr_mcu_section.h /usr/share/simavr/avr_mcu_section.h
+RUN zypper cc -a && rm -rf /tmp/* /var/log/* /var/cache/zypp/*
+
+
+# Setting up directory
+RUN mkdir /home/avride
+WORKDIR /home/avride
+ENV HOME /home/avride
+VOLUME ["/home/avride"]

@@ -1,0 +1,11 @@
+#+TITLE: avride
+
+The purpose of this project is to have a simple contenerized setup for avr programming. It starts an lsp server that can be used by any editor supporting lsp over a remote connection (only tested on emacs).
+
+To start the environment for the first time : 
+#+begin_src bash
+./startenv.sh
+#+end_src
+
+You know have pod named avride that you can manipulate like any pod (you can stop/restart/start/kill it).
+
